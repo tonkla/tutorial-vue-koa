@@ -28,12 +28,11 @@ export default {
   },
   methods: {
     createPost: function() {
-      const post = { ...this.post, id: nanoid() }
-      this.$store.commit('createPost', post)
+      this.$store.dispatch('createPost', this.post)
       this.blankPost = { ...this.blankPost }
     },
     updatePost: function() {
-      this.$store.commit('updatePost', this.post)
+      this.$store.dispatch('updatePost', this.post)
     },
   },
 }

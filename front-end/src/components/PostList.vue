@@ -38,10 +38,10 @@ export default {
       this.$store.commit('setPost', post)
     },
     deletePost: function(post) {
-      this.$store.commit('deletePost', post)
+      this.$store.dispatch('deletePost', post)
     },
     getPosts: async function() {
-      this.posts = await getPosts() // this.$store.state.user.token)
+      this.$store.dispatch('getPosts') // this.$store.state.user.token)
     },
   },
   created: function() {
