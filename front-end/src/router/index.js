@@ -25,6 +25,11 @@ const routes = [
     name: 'Login',
     component: () => import('../views/Login.vue'),
   },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () => import('../views/Register.vue'),
+  },
 ]
 
 const router = new VueRouter({
@@ -34,7 +39,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, _, next) => {
-  const isPublic = to.name === 'Login'
+  const isPublic = to.name === 'Login' || to.name === 'Register'
   if (store.getters.isAuthenticated) {
     isPublic ? next({ name: 'Home' }) : next()
   } else if (isPublic) {

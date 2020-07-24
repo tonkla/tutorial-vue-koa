@@ -10,6 +10,9 @@
       <div style="margin-top: 10px">
         <a-button type="primary" v-on:click="login">Log In</a-button>
       </div>
+      <div style="margin-top: 20px">
+        <router-link to="/register">Register</router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -23,8 +26,8 @@ export default {
     }
   },
   methods: {
-    login: function() {
-      this.$store.commit('login', { email: this.email, password: this.password })
+    login: async function() {
+      await this.$store.dispatch('login', { email: this.email, password: this.password })
       if (this.$store.getters.isAuthenticated) {
         this.$router.push('/')
       }
